@@ -25,14 +25,27 @@ public class FABot implements PlayerBot {
 
         for(Coordinates coord : myCoord) {
             Long movement = (long) (universeView.getPopulation(coord) / 1.5);
+            MovementCommand.Direction direction = null;
             if(universeView.getPopulation(coord) >= universeView.getMaximumPopulation()/8) {
-                MovementCommand.Direction direction = getDirection(universeView, coord);
-                if(direction != null)
-                    movementCommands.add(new MovementCommand(coord, direction, movement));
+                direction = getDirection(universeView, coord);
             } else if (universeView.getPopulation(coord) >= 2) {
-                movementCommands.add(new MovementCommand(coord, getRandomDirection(), movement));
+                direction = getRandomDirection();
             }
+            if(direction != null && canMove(universeView, coord, direction, movement))
+                movementCommands.add(new MovementCommand(coord, direction, movement));
         }
+    }
+
+    private Boolean canMove(UniverseView universeView, Coordinates myCoord, MovementCommand.Direction dir, Long numPeople) {
+        Coordinates next = null;
+        switch (dir) {
+            case DOWN: next = myCoord.getDown(); break;
+            case UP: next = myCoord.getUp(); break;
+            case LEFT: next = myCoord.getLeft(); break;
+            case RIGHT: next = myCoord.getRight(); break;
+        }
+        Long newPeople = numPeople + universeView.getPopulation(next);
+        return !universeView.belongsToMe(next) || newPeople <= universeView.getMaximumPopulation();
     }
 
     private MovementCommand.Direction getRandomDirection() {
