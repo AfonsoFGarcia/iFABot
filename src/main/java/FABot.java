@@ -28,11 +28,22 @@ public class FABot implements PlayerBot {
             MovementCommand.Direction direction = null;
             if(universeView.getPopulation(coord) >= universeView.getMaximumPopulation()/8) {
                 direction = getDirection(universeView, coord);
-            } else if (universeView.getPopulation(coord) >= 2) {
-                direction = getRandomDirection();
+                if(direction != null && canMove(universeView, coord, direction, movement)) {
+                    movementCommands.add(new MovementCommand(coord, direction, movement));
+                    return;
+                }
             }
-            if(direction != null && canMove(universeView, coord, direction, movement))
-                movementCommands.add(new MovementCommand(coord, direction, movement));
+            if (universeView.getPopulation(coord) >= 2) {
+                direction = getRandomDirection();
+                while (true) {
+                    if (canMove(universeView, coord, direction, movement)) {
+                        movementCommands.add(new MovementCommand(coord, direction, movement));
+                        return;
+                    } else {
+                        direction = getRandomDirection();
+                    }
+                }
+            }
         }
     }
 
