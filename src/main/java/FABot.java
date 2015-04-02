@@ -17,7 +17,7 @@ public class FABot implements PlayerBot {
     public void getNextCommands(UniverseView universeView, List<MovementCommand> movementCommands) {
         if(firstTurn) {
             side = new Double(Math.sqrt(universeView.getUniverseSize())).intValue();
-            System.out.println(side);
+            firstTurn = false;
         }
 
         List<Coordinates> myCoord = universeView.getMyCells();
@@ -66,7 +66,7 @@ public class FABot implements PlayerBot {
         for(int i = 0; i < side; i++) {
             for(int j = 0; j < side; j++) {
                 Coordinates coord = universeView.getCoordinates(i, j);
-                if(!universeView.isEmpty(coord) && !universeView.belongsToMe(coord)) {
+                if(!(universeView.isEmpty(coord) || universeView.belongsToMe(coord))) {
                     adversary.add(coord);
                 }
             }
