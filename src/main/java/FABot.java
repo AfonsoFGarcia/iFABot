@@ -3,9 +3,7 @@ import cern.ais.gridwars.UniverseView;
 import cern.ais.gridwars.bot.PlayerBot;
 import cern.ais.gridwars.command.MovementCommand;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by agfrg on 01/04/15.
@@ -18,6 +16,7 @@ public class FABot implements PlayerBot {
     @Override
     public void getNextCommands(UniverseView universeView, List<MovementCommand> movementCommands) {
         List<Coordinates> myCoord = universeView.getMyCells();
+        Collections.shuffle(myCoord, rand);
         if(firstTurn) {
             side = universeView.getUniverseSize();
             firstTurn = false;
