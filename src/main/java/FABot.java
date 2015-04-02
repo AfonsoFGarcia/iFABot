@@ -13,6 +13,7 @@ import java.util.Random;
 public class FABot implements PlayerBot {
     private Integer side;
     private Boolean firstTurn = true;
+    private List<MovementCommand.Direction> allDir = getAllDirections();
 
     @Override
     public void getNextCommands(UniverseView universeView, List<MovementCommand> movementCommands) {
@@ -24,27 +25,36 @@ public class FABot implements PlayerBot {
         List<Coordinates> myCoord = universeView.getMyCells();
 
         for(Coordinates coord : myCoord) {
-            Long movement = (long) (universeView.getPopulation(coord) / 1.5);
+            Long movement = 0L;
             MovementCommand.Direction direction = null;
             if(universeView.getPopulation(coord) >= universeView.getMaximumPopulation()/8) {
                 direction = getDirection(universeView, coord);
-                if(direction != null && canMove(universeView, coord, direction, movement)) {
-                    movementCommands.add(new MovementCommand(coord, direction, movement));
-                    return;
-                }
-            }
-            if (universeView.getPopulation(coord) >= 2) {
+                movement = (long) (universeView.getPopulation(coord) / 1.5);
+            } else if (universeView.getPopulation(coord) >= 2) {
                 direction = getRandomDirection();
-                while (true) {
-                    if (canMove(universeView, coord, direction, movement)) {
+                movement = universeView.getPopulation(coord) / 2;
+            }
+            if(direction != null && canMove(universeView, coord, direction, movement))
+                movementCommands.add(new MovementCommand(coord, direction, movement));
+            else {
+                movement = universeView.getPopulation(coord) / 2;
+                for(MovementCommand.Direction dir : allDir) {
+                    if(canMove(universeView, coord, dir, movement) && universeView.getPopulation(coord) >= 2) {
                         movementCommands.add(new MovementCommand(coord, direction, movement));
                         return;
-                    } else {
-                        direction = getRandomDirection();
                     }
                 }
             }
         }
+    }
+
+    private List<MovementCommand.Direction> getAllDirections() {
+        ArrayList<MovementCommand.Direction> allDir = new ArrayList<MovementCommand.Direction>();
+        allDir.add(MovementCommand.Direction.DOWN);
+        allDir.add(MovementCommand.Direction.LEFT);
+        allDir.add(MovementCommand.Direction.RIGHT);
+        allDir.add(MovementCommand.Direction.UP);
+        return allDir;
     }
 
     private Boolean canMove(UniverseView universeView, Coordinates myCoord, MovementCommand.Direction dir, Long numPeople) {
