@@ -26,7 +26,7 @@ public class FABot implements PlayerBot {
         for(Coordinates coord : myCoord) {
             if(universeView.getPopulation(coord) >= 2) {
                 Long movement = universeView.getPopulation(coord) / 2;
-                Double rand = Math.random() % 100;
+                Double rand = Math.random() % 1000;
                 MovementCommand.Direction direction;
                 if (rand > 30) {
                     direction = getDirection(universeView, coord);
