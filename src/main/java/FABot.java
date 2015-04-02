@@ -13,30 +13,45 @@ import java.util.Random;
 public class FABot implements PlayerBot {
     private Integer side;
     private Boolean firstTurn = true;
+    Random rand = new Random();
 
     @Override
     public void getNextCommands(UniverseView universeView, List<MovementCommand> movementCommands) {
+        List<Coordinates> myCoord = universeView.getMyCells();
         if(firstTurn) {
             side = universeView.getUniverseSize();
             firstTurn = false;
-        }
 
-        List<Coordinates> myCoord = universeView.getMyCells();
-
-        for(Coordinates coord : myCoord) {
-            Long movement = (long) (universeView.getPopulation(coord) / 1.5);
-            MovementCommand.Direction direction = null;
-            if(universeView.getPopulation(coord) >= universeView.getMaximumPopulation()/8) {
-                direction = getDirection(universeView, coord);
-            } else if (universeView.getPopulation(coord) >= 2) {
-                direction = getRandomDirection();
+            for(Coordinates coord : myCoord) {
+                Long movement = universeView.getPopulation(coord)/4;
+                movementCommands.add(new MovementCommand(coord, MovementCommand.Direction.LEFT, movement));
+                movementCommands.add(new MovementCommand(coord, MovementCommand.Direction.RIGHT, movement));
+                movementCommands.add(new MovementCommand(coord, MovementCommand.Direction.UP, movement));
+                movementCommands.add(new MovementCommand(coord, MovementCommand.Direction.DOWN, movement));
             }
-            if(direction != null && canMove(universeView, coord, direction, movement))
-                movementCommands.add(new MovementCommand(coord, direction, movement));
-            movement = movement/2;
-            if(direction != null && canMove(universeView, coord, direction, movement))
-                movementCommands.add(new MovementCommand(coord, direction, movement));
+        } else {
+            for (Coordinates coord : myCoord) {
+                Long movement = universeView.getPopulation(coord) - (long) (universeView.getPopulation(coord)/5);
+                MovementCommand.Direction direction = null;
+                direction = getDirection(universeView, coord, direction);
+                if (direction != null && canMove(universeView, coord, direction, movement))
+                    movementCommands.add(new MovementCommand(coord, direction, movement));
+            }
         }
+    }
+
+    public int randInt(int min, int max) {
+        return rand.nextInt((max - min) + 1) + min;
+    }
+
+    private MovementCommand.Direction getDirection(UniverseView universeView, Coordinates coord, MovementCommand.Direction direction) {
+        Boolean doRandom = randInt(1, 100) > 90;
+        if(!doRandom && universeView.getPopulation(coord) >= universeView.getMaximumPopulation()/4) {
+            direction = getDirection(universeView, coord);
+        } else if (universeView.getPopulation(coord) >= 2) {
+            direction = getRandomDirection();
+        }
+        return direction;
     }
 
     private Boolean canMove(UniverseView universeView, Coordinates myCoord, MovementCommand.Direction dir, Long numPeople) {
@@ -48,11 +63,10 @@ public class FABot implements PlayerBot {
             case RIGHT: next = myCoord.getRight(); break;
         }
         Long newPeople = numPeople + universeView.getPopulation(next);
-        return !universeView.belongsToMe(next) || newPeople <= universeView.getMaximumPopulation();
+        return (!universeView.belongsToMe(next) || newPeople <= universeView.getMaximumPopulation()) && numPeople > 0;
     }
 
     private MovementCommand.Direction getRandomDirection() {
-        Random rand = new Random();
         switch (rand.nextInt() % 4) {
             case 0: return MovementCommand.Direction.DOWN;
             case 1: return MovementCommand.Direction.LEFT;
