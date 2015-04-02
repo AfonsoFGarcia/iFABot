@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FABot:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FABot_jar</output-path>
+    <root id="archive" name="FABot.jar">
+      <element id="module-output" name="FABot" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/cern/api/1.0-SNAPSHOT/api-1.0-SNAPSHOT.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
