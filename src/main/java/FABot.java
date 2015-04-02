@@ -33,6 +33,9 @@ public class FABot implements PlayerBot {
             }
             if(direction != null && canMove(universeView, coord, direction, movement))
                 movementCommands.add(new MovementCommand(coord, direction, movement));
+            movement = movement/2;
+            if(direction != null && canMove(universeView, coord, direction, movement))
+                movementCommands.add(new MovementCommand(coord, direction, movement));
         }
     }
 
