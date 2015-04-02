@@ -16,7 +16,7 @@ public class FABot implements PlayerBot {
     @Override
     public void getNextCommands(UniverseView universeView, List<MovementCommand> movementCommands) {
         if(firstTurn) {
-            side = new Double(Math.sqrt(universeView.getUniverseSize())).intValue();
+            side = universeView.getUniverseSize();
             firstTurn = false;
         }
 
