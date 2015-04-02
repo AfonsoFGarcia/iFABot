@@ -23,7 +23,7 @@ public class FABot implements PlayerBot {
         List<Coordinates> myCoord = universeView.getMyCells();
 
         for(Coordinates coord : myCoord) {
-            if(universeView.getPopulation(coord) >= 2) {
+            if(universeView.getPopulation(coord) >= universeView.getMaximumPopulation()/10) {
                 Long movement = universeView.getPopulation(coord) / 2;
                 MovementCommand.Direction direction = getDirection(universeView, coord);
                 if(direction != null)
