@@ -8,13 +8,24 @@ import java.util.*;
 /**
  * Created by agfrg on 01/04/15.
  */
-public class FABot implements PlayerBot {
+public class iFABot implements PlayerBot {
     private Integer side;
     private Boolean firstTurn = true;
-    Random rand = new Random();
+    private Random rand = new Random();
 
     @Override
     public void getNextCommands(UniverseView universeView, List<MovementCommand> movementCommands) {
+        if(universeView.getCurrentTurn() < 100)
+            firstStrategy(universeView, movementCommands);
+        else if (universeView.getCurrentTurn() < 500)
+            secondStrategy(universeView, movementCommands);
+        else if (universeView.getCurrentTurn() < 530)
+            firstStrategy(universeView, movementCommands);
+        else
+            secondStrategy(universeView, movementCommands);
+    }
+
+    private void firstStrategy(UniverseView universeView, List<MovementCommand> movementCommands) {
         List<Coordinates> myCoord = universeView.getMyCells();
         Collections.shuffle(myCoord, rand);
         if(firstTurn) {
@@ -39,13 +50,23 @@ public class FABot implements PlayerBot {
         }
     }
 
+    private void secondStrategy(UniverseView universeView, List<MovementCommand> movementCommands) {
+        for(Coordinates coord : getOrderedHeuristic(universeView)) {
+            if (universeView.getPopulation(coord) > 1) {
+                Long movement = universeView.getPopulation(coord)/ 2;
+                MovementCommand.Direction direction = getHeuristicalDirection(universeView, coord);
+                movementCommands.add(new MovementCommand(coord, direction, movement));
+            }
+        }
+    }
+
     public int randInt(int min, int max) {
         return rand.nextInt((max - min) + 1) + min;
     }
 
     private MovementCommand.Direction getDirection(UniverseView universeView, Coordinates coord, MovementCommand.Direction direction) {
         Boolean doRandom = randInt(1, 100) > 90;
-        if(!doRandom && universeView.getPopulation(coord) >= universeView.getMaximumPopulation()/4) {
+        if(/*!doRandom && */universeView.getPopulation(coord) >= universeView.getMaximumPopulation()/4) {
             direction = getDirection(universeView, coord);
         } else if (universeView.getPopulation(coord) >= 2) {
             direction = getRandomDirection();
@@ -136,5 +157,84 @@ public class FABot implements PlayerBot {
         }
 
         return closest;
+    }
+
+    private Queue<Coordinates> getOrderedHeuristic(UniverseView universeView) {
+        PriorityQueue<Coordinates> ret = new PriorityQueue<>(4, new HeuristicComparator(universeView));
+        for(Coordinates coord : universeView.getMyCells())
+            ret.add(coord);
+        return ret;
+    }
+
+    private MovementCommand.Direction getHeuristicalDirection(UniverseView universeView, Coordinates coordinates) {
+        MovementCommand.Direction ret = null;
+        Long population = Long.MAX_VALUE;
+        Long tmp_p;
+        Coordinates tmp_c;
+
+        tmp_c = coordinates.getLeft();
+        tmp_p = (universeView.belongsToMe(tmp_c) ? universeView.getPopulation(tmp_c) : -universeView.getPopulation(tmp_c));
+        if(tmp_p < population) {
+            ret = MovementCommand.Direction.LEFT;
+            population = tmp_p;
+        }
+
+        tmp_c = coordinates.getDown();
+        tmp_p = (universeView.belongsToMe(tmp_c) ? universeView.getPopulation(tmp_c) : -universeView.getPopulation(tmp_c));
+        if(tmp_p < population) {
+            ret = MovementCommand.Direction.DOWN;
+            population = tmp_p;
+        }
+
+        tmp_c = coordinates.getUp();
+        tmp_p = (universeView.belongsToMe(tmp_c) ? universeView.getPopulation(tmp_c) : -universeView.getPopulation(tmp_c));
+        if(tmp_p < population) {
+            ret = MovementCommand.Direction.UP;
+            population = tmp_p;
+        }
+
+        tmp_c = coordinates.getRight();
+        tmp_p = (universeView.belongsToMe(tmp_c) ? universeView.getPopulation(tmp_c) : -universeView.getPopulation(tmp_c));
+        if(tmp_p < population) {
+            ret = MovementCommand.Direction.RIGHT;
+        }
+
+        return ret;
+    }
+
+    private class HeuristicComparator implements Comparator<Coordinates> {
+        private UniverseView universeView;
+
+        public HeuristicComparator(UniverseView universeView) {
+            this.universeView = universeView;
+        }
+
+        @Override
+        public int compare(Coordinates o1, Coordinates o2) {
+            Long populationNearO1 = 0L;
+            Long populationNearO2 = 0L;
+
+            Coordinates o1u = o1.getUp();
+            Coordinates o1l = o1.getLeft();
+            Coordinates o1d = o1.getDown();
+            Coordinates o1r = o1.getRight();
+
+            Coordinates o2u = o2.getUp();
+            Coordinates o2l = o2.getLeft();
+            Coordinates o2d = o2.getDown();
+            Coordinates o2r = o2.getRight();
+
+            populationNearO1 = (universeView.belongsToMe(o1u) ? universeView.getPopulation(o1u) : -universeView.getPopulation(o1u));
+            populationNearO1 = (universeView.belongsToMe(o1l) ? universeView.getPopulation(o1l) : -universeView.getPopulation(o1l));
+            populationNearO1 = (universeView.belongsToMe(o1d) ? universeView.getPopulation(o1d) : -universeView.getPopulation(o1d));
+            populationNearO1 = (universeView.belongsToMe(o1r) ? universeView.getPopulation(o1r) : -universeView.getPopulation(o1r));
+
+            populationNearO2 = (universeView.belongsToMe(o2u) ? universeView.getPopulation(o2u) : -universeView.getPopulation(o2u));
+            populationNearO2 = (universeView.belongsToMe(o2l) ? universeView.getPopulation(o2l) : -universeView.getPopulation(o2l));
+            populationNearO2 = (universeView.belongsToMe(o2d) ? universeView.getPopulation(o2d) : -universeView.getPopulation(o2d));
+            populationNearO2 = (universeView.belongsToMe(o2r) ? universeView.getPopulation(o2r) : -universeView.getPopulation(o2r));
+
+            return populationNearO1.intValue() - populationNearO2.intValue();
+        }
     }
 }

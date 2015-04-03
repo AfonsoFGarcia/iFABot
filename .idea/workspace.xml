@@ -38,15 +38,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FABot.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/FABot.java">
+      <file leaf-file-name="iFABot.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43150684" vertical-offset="315" max-vertical-offset="2115">
-              <caret line="47" column="31" selection-start-line="47" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.67808217" vertical-offset="450" max-vertical-offset="3105">
+              <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
               <folding>
-                <element signature="e#1827#1828#0" expanded="true" />
-                <element signature="e#1885#1886#0" expanded="true" />
-                <element signature="e#4599#4612#0" expanded="true" />
+                <element signature="e#2865#2866#0" expanded="true" />
+                <element signature="e#2923#2924#0" expanded="true" />
+                <element signature="e#5641#5654#0" expanded="true" />
+                <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+                <element signature="e#8573#8574#0" expanded="true" />
+                <element signature="e#8629#8630#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -71,6 +74,10 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/FABot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/HeuristicComparator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/PerkelenBotti.java" />
+        <option value="$PROJECT_DIR$/src/main/java/FABotNeue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/iFABot.java" />
       </list>
     </option>
   </component>
@@ -112,7 +119,7 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -227,7 +234,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -382,7 +389,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="827" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -405,8 +412,8 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -426,7 +433,9 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -441,14 +450,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FABot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="2115">
+          <caret line="47" column="31" selection-start-line="47" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#5641#5654#0" expanded="true" />
+            <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+            <element signature="e#8573#8574#0" expanded="true" />
+            <element signature="e#8629#8630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="930">
+          <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="600" max-vertical-offset="1845">
           <caret line="47" column="50" selection-start-line="47" selection-start-column="50" selection-end-line="47" selection-end-column="50" />
           <folding>
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#4599#4612#0" expanded="true" />
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#5641#5654#0" expanded="true" />
+            <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+            <element signature="e#8573#8574#0" expanded="true" />
+            <element signature="e#8629#8630#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -461,14 +496,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FABot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="345" max-vertical-offset="1440">
           <caret line="25" column="90" selection-start-line="25" selection-start-column="90" selection-end-line="25" selection-end-column="90" />
           <folding>
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#4599#4612#0" expanded="true" />
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#5641#5654#0" expanded="true" />
+            <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+            <element signature="e#8573#8574#0" expanded="true" />
+            <element signature="e#8629#8630#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -481,14 +519,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FABot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="495" max-vertical-offset="1440">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
           <folding>
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#4599#4612#0" expanded="true" />
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#5641#5654#0" expanded="true" />
+            <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+            <element signature="e#8573#8574#0" expanded="true" />
+            <element signature="e#8629#8630#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -501,14 +542,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FABot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="465" max-vertical-offset="1440">
           <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
           <folding>
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#4599#4612#0" expanded="true" />
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#5641#5654#0" expanded="true" />
+            <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+            <element signature="e#8573#8574#0" expanded="true" />
+            <element signature="e#8629#8630#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -521,14 +565,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FABot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1515">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#4599#4612#0" expanded="true" />
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#5641#5654#0" expanded="true" />
+            <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+            <element signature="e#8573#8574#0" expanded="true" />
+            <element signature="e#8629#8630#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -541,14 +588,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FABot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="630">
           <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding>
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#4599#4612#0" expanded="true" />
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#5641#5654#0" expanded="true" />
+            <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+            <element signature="e#8573#8574#0" expanded="true" />
+            <element signature="e#8629#8630#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -561,14 +611,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/FABot.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/iFABot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43150684" vertical-offset="315" max-vertical-offset="2115">
-          <caret line="47" column="31" selection-start-line="47" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.67808217" vertical-offset="450" max-vertical-offset="3105">
+          <caret line="68" column="13" selection-start-line="68" selection-start-column="13" selection-end-line="68" selection-end-column="13" />
           <folding>
-            <element signature="e#1827#1828#0" expanded="true" />
-            <element signature="e#1885#1886#0" expanded="true" />
-            <element signature="e#4599#4612#0" expanded="true" />
+            <element signature="e#2865#2866#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#5641#5654#0" expanded="true" />
+            <element signature="class#HeuristicComparator#0;class#iFABot#0" expanded="false" />
+            <element signature="e#8573#8574#0" expanded="true" />
+            <element signature="e#8629#8630#0" expanded="true" />
           </folding>
         </state>
       </provider>
